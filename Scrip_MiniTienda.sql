@@ -99,3 +99,53 @@ BEGIN
 END //
 DELIMITER ;
 -- Usuarios
+-- Insertar
+DELIMITER //
+CREATE PROCEDURE procInsertUsers(
+    IN v_correo VARCHAR(255), 
+    IN v_contraseña VARCHAR(255), 
+    IN v_salt VARCHAR(255), 
+    IN v_estado INT
+)
+BEGIN
+    INSERT INTO tbl_usuarios (usu_correo, usu_contraseña, usu_salt, usu_estado) 
+    VALUES (v_correo, v_contraseña, v_salt, v_estado);
+END //
+DELIMITER ;
+
+-- Actualizar
+DELIMITER //
+CREATE PROCEDURE procUpdateUsers(
+    IN v_id INT, 
+    IN v_correo VARCHAR(255), 
+    IN v_contraseña VARCHAR(255), 
+    IN v_salt VARCHAR(255), 
+    IN v_estado INT
+)
+BEGIN
+    UPDATE tbl_usuarios
+    SET 
+        usu_correo = v_correo, 
+        usu_contraseña = v_contraseña, 
+        usu_salt = v_salt, 
+        usu_estado = v_estado
+    WHERE usu_id = v_id;
+END //
+DELIMITER ;
+
+-- Mostrar
+DELIMITER //
+CREATE PROCEDURE procSelectUsers()
+BEGIN
+    SELECT usu_id, usu_correo, usu_contraseña, usu_salt, usu_estado 
+    FROM tbl_usuarios;
+END //
+DELIMITER ;
+
+-- Eliminar
+DELIMITER //
+CREATE PROCEDURE procDeleteUsers(IN v_id INT)
+BEGIN
+    DELETE FROM tbl_usuarios WHERE usu_id = v_id;
+END //
+DELIMITER ;
