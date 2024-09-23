@@ -64,5 +64,38 @@ BEGIN
 END //
 DELIMITER ;
 -- Productos
+-- Insertar
+DELIMITER //
+CREATE PROCEDURE procInsertProduct(IN v_codigo VARCHAR(45), IN v_descripcion VARCHAR(45), IN v_cantidad INT, IN v_precio DECIMAL(10,2))
+BEGIN
+    INSERT INTO tbl_productos(pro_codigo, pro_descripcion, pro_cantidad, pro_precio) 
+    VALUES (v_codigo, v_descripcion, v_cantidad, v_precio);
+END //
+DELIMITER ;
 
+-- Actualizar
+DELIMITER //
+CREATE PROCEDURE procUpdateProduct(IN v_id INT, IN v_codigo VARCHAR(45), IN v_descripcion VARCHAR(45), IN v_cantidad INT, IN v_precio DECIMAL(10,2))
+BEGIN
+    UPDATE tbl_productos
+    SET pro_codigo = v_codigo, pro_descripcion = v_descripcion, pro_cantidad = v_cantidad, pro_precio = v_precio
+    WHERE pro_id = v_id;
+END //
+DELIMITER ;
+
+-- Mostrar
+DELIMITER //
+CREATE PROCEDURE procSelectProduct()
+BEGIN
+    SELECT pro_id, pro_codigo, pro_descripcion, pro_cantidad, pro_precio FROM tbl_productos;
+END //
+DELIMITER ;
+
+-- Eliminar
+DELIMITER //
+CREATE PROCEDURE procDeleteProduct(IN v_id INT)
+BEGIN
+    DELETE FROM tbl_productos WHERE pro_id = v_id;
+END //
+DELIMITER ;
 -- Usuarios
