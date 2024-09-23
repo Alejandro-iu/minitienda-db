@@ -1,4 +1,5 @@
 -- Categorias
+
 -- Insertar
 DELIMITER //
 create procedure procInsertCategory(IN v_description VARCHAR(45))
@@ -30,6 +31,7 @@ begin
 end//
 DELIMITER ;
 -- Proveedores
+
 -- Insertar
 DELIMITER //
 CREATE PROCEDURE procInsertProviders(IN v_nit VARCHAR(45), IN v_nombre VARCHAR(45))
@@ -64,6 +66,7 @@ BEGIN
 END //
 DELIMITER ;
 -- Productos
+
 -- Insertar
 DELIMITER //
 CREATE PROCEDURE procInsertProduct(IN v_codigo VARCHAR(45), IN v_descripcion VARCHAR(45), IN v_cantidad INT, IN v_precio DECIMAL(10,2))
@@ -99,6 +102,7 @@ BEGIN
 END //
 DELIMITER ;
 -- Usuarios
+
 -- Insertar
 DELIMITER //
 CREATE PROCEDURE procInsertUsers(
